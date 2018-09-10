@@ -1,15 +1,14 @@
 ﻿@model IEnumerable<ProductBookinUI.Models.ActivityProduct>
 
 @{
-    ViewBag.Title = "Activity Products";
+    ViewBag.Title = "GetSavedProds";
 }
 
-<h2>GetActivityProducts</h2>
+<h2>GetSavedProds</h2>
 
-<p> 
-    @Html.ActionLink("Get Saved Items", "GetSavedProds")
+<p>
+    @Html.ActionLink("Create New", "Create")
 </p>
-<p>@Html.ActionLink("Get Booked Items", "GetBookedProds")</p>
 <table class="table">
     <tr>
         <th>
@@ -27,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
-        
+       
         <th></th>
     </tr>
 
@@ -49,12 +48,7 @@
             @Html.DisplayFor(modelItem => item.Place)
         </td>
        
-        <td>
-            @Html.ActionLink("Book", "BookProductIntoDB", new { @productId = item.Id }) |
-            @Html.ActionLink("Save", "SaveProductIntoDB", new { @productId = item.Id}) 
-     
-            
-        </td>
+       
     </tr>
 }
 

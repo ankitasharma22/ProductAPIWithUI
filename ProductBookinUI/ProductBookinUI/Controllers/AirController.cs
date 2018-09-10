@@ -133,5 +133,64 @@ namespace ProductBookinUI.Controllers
             return null;
         }
 
+        public ActionResult GetSavedProds()
+        {
+            List<AirProduct> list = GetSavedProducts();
+            return View(list);
+        }
+
+        public List<AirProduct> GetSavedProducts()
+        {
+            string url = "http://localhost:49896";
+ 
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync("/api/Air/GetSavedItems").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    string ActivityProductResponse = response.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    return JsonConvert.DeserializeObject<List<AirProduct>>(ActivityProductResponse);
+                }
+            }
+            return null;
+
+        }
+
+        public ActionResult GetBookedProds()
+        {
+            List<AirProduct> list = GetBookedProducts();
+            return View(list);
+        }
+        public List<AirProduct> GetBookedProducts()
+        {
+            string url = "http://localhost:49896";
+ 
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync("/api/Air/GetBookedItems").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    string ActivityProductResponse = response.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    return JsonConvert.DeserializeObject<List<AirProduct>>(ActivityProductResponse);
+                }
+            }
+            return null;
+
+        }
     }
 }

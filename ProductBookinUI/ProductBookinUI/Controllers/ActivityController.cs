@@ -139,6 +139,67 @@ namespace ProductBookinUI.Controllers
             return View();
         }
 
-        
+        public ActionResult GetSavedProds()
+        {
+            List<ActivityProduct> list = GetSavedProducts();
+            return View(list);
+        }
+
+        public List<ActivityProduct> GetSavedProducts()
+        {
+            string url = "http://localhost:49896";
+
+            List<ActivityProduct> activityProduct = new List<ActivityProduct>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync("/api/Activity/GetSavedItems").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    string ActivityProductResponse = response.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    return JsonConvert.DeserializeObject<List<ActivityProduct>>(ActivityProductResponse);
+                }
+            }
+            return activityProduct;
+
+        }
+
+        public ActionResult GetBookedProds()
+        {
+            List<ActivityProduct> list = GetBookedProducts();
+            return View(list);
+        }
+        public List<ActivityProduct> GetBookedProducts()
+        {
+            string url = "http://localhost:49896";
+
+            List<ActivityProduct> activityProduct = new List<ActivityProduct>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync("/api/Activity/GetBookedItems").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    string ActivityProductResponse = response.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    return JsonConvert.DeserializeObject<List<ActivityProduct>>(ActivityProductResponse);
+                }
+            }
+            return activityProduct;
+
+        }
     }
 }

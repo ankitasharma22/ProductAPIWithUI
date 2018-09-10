@@ -162,6 +162,14 @@
     <Content Include="Views\Air\AddAirProduct.cshtml" />
     <Content Include="Views\Car\AddCarProduct.cshtml" />
     <Content Include="Views\Hotel\AddHotelProduct.cshtml" />
+    <Content Include="Views\Activity\GetSavedProds.cshtml" />
+    <Content Include="Views\Activity\GetBookedProds.cshtml" />
+    <Content Include="Views\Air\GetSavedProds.cshtml" />
+    <Content Include="Views\Air\GetBookedProds.cshtml" />
+    <Content Include="Views\Car\GetSavedProds.cshtml" />
+    <Content Include="Views\Car\GetBookedProds.cshtml" />
+    <Content Include="Views\Hotel\GetSavedProds.cshtml" />
+    <Content Include="Views\Hotel\GetBookedProds.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
