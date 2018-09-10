@@ -18,12 +18,15 @@ namespace ProductBookinUsingEntity.Controllers
         public IEnumerable<CarProduct> GetValue()
         {
             return entity.CarProducts.ToList();
-        } 
+        }
 
         [HttpPost]
         public void Post([FromBody]JObject jsonFormatInput)
         {
-            entity.CarProducts.Add(jsonFormatInput.ToObject<CarProduct>());
+            CarStrategy strategy = new CarStrategy();
+
+            CarProduct product = entity.CarProducts.Add(jsonFormatInput.ToObject<CarProduct>());
+            product.Price = strategy.FareCalculation(product.Price);
             entity.SaveChanges();
         }
 
@@ -31,19 +34,19 @@ namespace ProductBookinUsingEntity.Controllers
         [Route("api/Car/Book/{id}")]
         public void Book([FromUri] int id)
         {
-           
-            carProduct = entity.CarProducts.Find(id); 
-                carProduct.isBooked = true; 
+
+            carProduct = entity.CarProducts.Find(id);
+            carProduct.isBooked = true;
             entity.SaveChanges();
-        } 
+        }
 
         [HttpPut]
         [Route("api/Car/Save/{id}")]
         public void Save([FromUri] int id)
         {
-           
-            carProduct = entity.CarProducts.Find(id); 
-                carProduct.isSaved = true; 
+
+            carProduct = entity.CarProducts.Find(id);
+            carProduct.isSaved = true;
             entity.SaveChanges();
         }
 

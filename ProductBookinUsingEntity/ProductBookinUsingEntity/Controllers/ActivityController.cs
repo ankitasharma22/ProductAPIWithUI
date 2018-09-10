@@ -18,12 +18,14 @@ namespace ProductBookinUsingEntity.Controllers
         public IEnumerable<ActivityProduct> GetValue()
         {
             return entity.ActivityProducts.ToList();
-        }
-
+        } 
+        
         [HttpPost]
         public void Post([FromBody]JObject jsonFormatInput)
         {
-            entity.ActivityProducts.Add(jsonFormatInput.ToObject<ActivityProduct>());
+            ActivityStrategy strategy = new ActivityStrategy();
+            ActivityProduct product = entity.ActivityProducts.Add(jsonFormatInput.ToObject<ActivityProduct>());
+            product.Price = strategy.FareCalculation(product.Price);
             entity.SaveChanges();
         }
 

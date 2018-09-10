@@ -18,14 +18,14 @@ namespace ProductBookinUsingEntity.Controllers
         {
             return entity.AirProducts.ToList();
         }
-
-
-
+         
+      
         [HttpPost]
         public void Post([FromBody]JObject jsonFormatInput)
         {
-          //  entity.AirProducts.Add(jsonFormatInput);
-            entity.AirProducts.Add(jsonFormatInput.ToObject<AirProduct>());
+            AirStrategy strategy = new AirStrategy(); 
+            AirProduct product = entity.AirProducts.Add(jsonFormatInput.ToObject<AirProduct>());
+            product.Price = strategy.FareCalculation(product.Price);
             entity.SaveChanges();
         }
 

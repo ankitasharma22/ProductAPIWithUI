@@ -19,15 +19,15 @@ namespace ProductBookinUsingEntity.Controllers
                 return entity.HotelProducts.ToList(); 
         }
 
-
-
+ 
         [HttpPost]
         public void Post([FromBody]JObject jsonFormatInput)
         {
-            entity.HotelProducts.Add(jsonFormatInput.ToObject<HotelProduct>());
+            HotelStrategy strategy = new HotelStrategy();
+            HotelProduct product = entity.HotelProducts.Add(jsonFormatInput.ToObject<HotelProduct>());
+            product.Price = strategy.FareCalculation(product.Price);
             entity.SaveChanges();
         }
-
 
         [HttpPut]
         [Route("api/Hotel/Book/{id}")]
