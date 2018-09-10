@@ -34,11 +34,8 @@ namespace ProductBookinUsingEntity.Controllers
         public void Book([FromUri] int id)
         {
            
-            airProduct = entity.AirProducts.Find(id);
-            if (airProduct.isBooked == false)
-                airProduct.isBooked = true;
-            else
-                airProduct.isBooked = false;
+            airProduct = entity.AirProducts.Find(id); 
+                airProduct.isBooked = true; 
             entity.SaveChanges();
         }
 
@@ -48,11 +45,8 @@ namespace ProductBookinUsingEntity.Controllers
         public void Save([FromUri] int id)
         {
             
-            airProduct = entity.AirProducts.Find(id);
-            if (airProduct.isSaved == false)
-                airProduct.isSaved = true;
-            else
-                airProduct.isSaved = false;
+            airProduct = entity.AirProducts.Find(id); 
+                airProduct.isSaved = true; 
             entity.SaveChanges();
         }
 
@@ -67,7 +61,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < airItems.Count; i++)
             {
-                airProduct = airItems[0];
+                airProduct = airItems[i];
                 if (airProduct.isSaved == true)
                 {
                     airSavedItems.Add(airProduct);
@@ -87,7 +81,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < airItems.Count; i++)
             {
-                airProduct = airItems[0];
+                airProduct = airItems[i];
                 if (airProduct.isBooked == true)
                 {
                     airBookedItems.Add(airProduct);

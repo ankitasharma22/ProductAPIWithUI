@@ -32,11 +32,8 @@ namespace ProductBookinUsingEntity.Controllers
         public void Book([FromUri] int id)
         {
            
-            carProduct = entity.CarProducts.Find(id);
-            if (carProduct.isBooked == false)
-                carProduct.isBooked = true;
-            else
-                carProduct.isBooked = false;
+            carProduct = entity.CarProducts.Find(id); 
+                carProduct.isBooked = true; 
             entity.SaveChanges();
         } 
 
@@ -45,11 +42,8 @@ namespace ProductBookinUsingEntity.Controllers
         public void Save([FromUri] int id)
         {
            
-            carProduct = entity.CarProducts.Find(id);
-            if (carProduct.isSaved == false)
-                carProduct.isSaved = true;
-            else
-                carProduct.isSaved = false;
+            carProduct = entity.CarProducts.Find(id); 
+                carProduct.isSaved = true; 
             entity.SaveChanges();
         }
 
@@ -63,7 +57,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < carItems.Count; i++)
             {
-                carProduct = carItems[0];
+                carProduct = carItems[i];
                 if (carProduct.isSaved == true)
                 {
                     carSavedItems.Add(carProduct);
@@ -83,7 +77,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < carItems.Count; i++)
             {
-                carProduct = carItems[0];
+                carProduct = carItems[i];
                 if (carProduct.isBooked == true)
                 {
                     carBookedItems.Add(carProduct);

@@ -33,11 +33,8 @@ namespace ProductBookinUsingEntity.Controllers
         [Route("api/Hotel/Book/{id}")]
         public void Book([FromUri] int id)
         { 
-            hotelProduct = entity.HotelProducts.Find(id);
-            if (hotelProduct.isBooked == false)
-                hotelProduct.isBooked = true;
-            else
-                hotelProduct.isBooked = false;
+            hotelProduct = entity.HotelProducts.Find(id); 
+                hotelProduct.isBooked = true; 
             entity.SaveChanges(); 
         }
 
@@ -46,11 +43,8 @@ namespace ProductBookinUsingEntity.Controllers
         public void Save([FromUri] int id)
         {
             
-            hotelProduct = entity.HotelProducts.Find(id);
-            if (hotelProduct.isSaved == false)
-                hotelProduct.isSaved = true;
-            else
-                hotelProduct.isSaved = false;
+            hotelProduct = entity.HotelProducts.Find(id); 
+                hotelProduct.isSaved = true; 
             entity.SaveChanges();
         }
 
@@ -65,7 +59,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < hotelItems.Count; i++)
             {
-                hotelProduct = hotelItems[0];
+                hotelProduct = hotelItems[i];
                 if (hotelProduct.isSaved == true)
                 {
                     hotelSavedItems.Add(hotelProduct);
@@ -85,7 +79,7 @@ namespace ProductBookinUsingEntity.Controllers
 
             for (int i = 0; i < hotelItems.Count; i++)
             {
-                hotelProduct = hotelItems[0];
+                hotelProduct = hotelItems[i];
                 if (hotelProduct.isBooked == true)
                 {
                     hotelBookedItems.Add(hotelProduct);

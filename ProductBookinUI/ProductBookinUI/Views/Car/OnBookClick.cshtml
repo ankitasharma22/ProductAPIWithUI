@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProductBookinUI.Models.CarProduct>
+
+@{
+    ViewBag.Title = "OnBookClick";
+}
+
+<h2>OnBookClick</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isBooked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isSaved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isSaved)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
+                @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+@if (ViewData["CantBook"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Cant book");
+        };
+    </script>
+}

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProductBookinUI.Models.ActivityProduct>
+
+@{
+    ViewBag.Title = "OnBookClick";
+}
+
+<h2>OnBookClick</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td> 
+        <td>
+            @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
+            @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>
+@if (ViewData["CantBook"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Cant book");
+        };
+    </script>
+}
