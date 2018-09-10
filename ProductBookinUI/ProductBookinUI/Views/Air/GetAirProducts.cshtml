@@ -56,8 +56,8 @@
         </td>
        
         <td>
-            @Html.ActionLink("Book", "BookProductIntoDB", new { @productId = item.Id }) |
-            @Html.ActionLink("Save", "SaveProductIntoDB", new { @productId = item.Id })
+            @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
+            @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })
             
         </td>
     </tr>

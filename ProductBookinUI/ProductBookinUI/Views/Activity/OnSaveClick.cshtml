@@ -26,12 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isBooked)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isSaved)
-        </th>
+     
         <th></th>
     </tr>
 
@@ -52,12 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Place)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isBooked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isSaved)
-        </td>
+       
         <td>
             @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
             @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })

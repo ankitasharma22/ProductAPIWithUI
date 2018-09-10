@@ -176,6 +176,8 @@
     <Content Include="Views\Air\OnSaveClick.cshtml" />
     <Content Include="Views\Car\OnSaveClick.cshtml" />
     <Content Include="Views\Car\OnBookClick.cshtml" />
+    <Content Include="Views\Hotel\OnBookClick.cshtml" />
+    <Content Include="Views\Hotel\OnSaveClick.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

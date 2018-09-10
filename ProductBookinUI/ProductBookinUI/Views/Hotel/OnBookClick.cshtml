@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductBookinUI.Models.AirProduct>
+﻿@model IEnumerable<ProductBookinUI.Models.HotelProduct>
 
 @{
     ViewBag.Title = "OnBookClick";
@@ -12,48 +12,50 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FlightCompany)
+            @Html.DisplayNameFor(model => model.FromDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DepartureDate)
+            @Html.DisplayNameFor(model => model.ToDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArrivalDate)
+            @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FromPlace)
+            @Html.DisplayNameFor(model => model.Address)
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ToPlace)
+            <p>Name </p>
+         @*   @Html.DisplayNameFor(model => model.LandMark)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-     
+       
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FlightCompany)
+            @Html.DisplayFor(modelItem => item.FromDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DepartureDate)
+            @Html.DisplayFor(modelItem => item.ToDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ArrivalDate)
+            @Html.DisplayFor(modelItem => item.City)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FromPlace)
+            @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ToPlace)
+            @Html.DisplayFor(modelItem => item.LandMark)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-       
+        
         <td>
             @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
             @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })
@@ -62,11 +64,3 @@
 }
 
 </table>
-@if (ViewData["CantBook"] != null)
-{
-    <script type="text/javascript">
-        window.onload = function () {
-            alert("Cant book");
-        };
-    </script>
-}

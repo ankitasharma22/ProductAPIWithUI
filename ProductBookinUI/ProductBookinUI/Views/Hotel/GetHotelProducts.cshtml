@@ -24,7 +24,8 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LandMark)
+            <p>Name </p>
+            @*   @Html.DisplayNameFor(model => model.LandMark)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -55,8 +56,8 @@
         </td>
    
         <td>
-            @Html.ActionLink("Book", "BookProductIntoDB", new { @productId = item.Id }) |
-            @Html.ActionLink("Save", "SaveProductIntoDB", new { @productId = item.Id })
+            @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
+            @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })
         </td>
     </tr>
 }

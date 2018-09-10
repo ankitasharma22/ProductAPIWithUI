@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ProductBookinUI.Models.HotelProduct>
 
 @{
-    ViewBag.Title = "GetBookedProds";
+    ViewBag.Title = "OnSaveClick";
 }
 
-<h2>GetBookedProds</h2>
+<h2>OnSaveClick</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,15 +21,16 @@
             @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
             <p>Name </p>
             @*   @Html.DisplayNameFor(model => model.LandMark)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LandMark)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th> 
+        </th>
+       
         <th></th>
     </tr>
 
@@ -52,7 +53,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
-        </td>  
+        </td>
+        
+        <td>
+            @Html.ActionLink("Book", "OnBookClick", new { @productId = item.Id }) |
+            @Html.ActionLink("Save", "OnSaveClick", new { @productId = item.Id })
+        </td>
     </tr>
 }
 
